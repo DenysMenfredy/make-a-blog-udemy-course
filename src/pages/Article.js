@@ -3,12 +3,15 @@ import { useParams } from "react-router-dom";
 // useParams => hook to receive the params from the url
 import articles from "./article-content";
 
+import Articles from "../components/Articles";
+import NotFound from "./NotFound";
 
 function Article() {
     const { name } = useParams();
     const article = articles.find( (article) => article.name === name);
 
-    if(!article) return <h1>Article not found</h1>;
+    if(!article) return <NotFound />;
+    const otherArticles = articles.filter( (article) => article.name !== name);
 
     return (
         <>
@@ -20,6 +23,12 @@ function Article() {
                     {paragraph}
                 </p>
             ))}
+            <h1 className="sm:text-2x text-xl font-bold mt-4 mb-4 text-gray-900">
+                Other Articles
+            </h1>
+            <div className="flex flex-wrap -m-4">
+                <Articles articles={otherArticles} />
+            </div>
         </>
         
     );
