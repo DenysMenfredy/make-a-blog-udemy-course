@@ -24,3 +24,5 @@ yarn-error.log*
 
 # tailwindcss
 /src/styles/tailwind.css
+/src/styles/tailwind.css.map
+src/styles/tailwind.css
