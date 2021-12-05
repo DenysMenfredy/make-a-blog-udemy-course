@@ -1,9 +1,10 @@
 require('dotenv').config();
 const express = require('express');
-const { MongoDBNamespace } = require('mongodb');
 const app = express();
+const cors = require('cors');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 const { withDB } = require('./db');
 
@@ -19,6 +20,7 @@ app.get('/api/articles/:name', (req, res) => {
     withDB(async (db) => {
         const articleInfo = await db.collection('articles').findOne({ name: name });
         if (articleInfo) {
+            res.setHeader('Access-Control-Allow-Origin', '*');
             return res.status(200).json(articleInfo);
         }
         return res.status(404).json({ message: 'Article not found' });
@@ -65,6 +67,10 @@ app.post("/api/articles/:name/add-comments", (req, res) => {
                 },
             });
             const updatedArticleInfo = await db.collection('articles').findOne({ name: articleName });
+            // res.header('Access-Control-Allow-Origin', '*');
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+            res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
             return res.status(200).json(updatedArticleInfo);
     } else {
         return res.status(404).json({ message: 'Article not found' });
