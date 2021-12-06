@@ -5,6 +5,7 @@ The goal of this project is to develop a basic blog project following [this](htt
 <img align="left" alt="ReactJS logo" src="https://img.icons8.com/office/48/000000/react.png" />
 <img align="left" alt="NodeJS logo" src="https://img.icons8.com/color/48/000000/nodejs.png"/>
 <img align="left" alt="Tailwind CSS logo" src="https://cdn.worldvectorlogo.com/logos/tailwindcss.svg" width="48px" height="48px" />
+<img align="left" alt="MongoDB logo" src="https://img.icons8.com/color/48/000000/mongodb.png"/>
 <br><br>
 
 # Result ✔️
